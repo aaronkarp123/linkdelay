@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>Link Delay</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,6 +22,7 @@
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -29,9 +30,39 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type="text/javascript">
+        // This function gets the current time and injects it into the DOM
+        function updateClock() {
+            // Gets the current time
+            var now = new Date();
+
+            // Get the hours, minutes and seconds from the current time
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Format hours, minutes and seconds
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+
+            // Gets the element we want to inject the clock into
+            var elem = document.getElementById('clock');
+
+            // Sets the elements inner HTML value to our clock data
+            elem.innerHTML = hours + ':' + minutes + ':' + seconds;
+        }
+    </script>
+
 </head>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" onload="setInterval('updateClock()', 200);">
 
     <!-- Navigation -->
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -41,7 +72,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Start</span> Bootstrap
+                    <i class="fa fa-play-circle"></i>  <span class="light">Back</span> Home
                 </a>
             </div>
 
@@ -51,12 +82,6 @@
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
                         <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#download">Download</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -74,9 +99,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Grayscale</h1>
-                        <p class="intro-text">A free, responsive, one page Bootstrap theme.<br>Created by Start Bootstrap.</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
+                        <h1 class="brand-heading">Link Delay</h1>
+                        <p class="intro-text">Create your link below</p>
+                        <a href="#linkinput" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -85,30 +110,58 @@
         </div>
     </header>
 
+    <section id="linkinput" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <br><br><br><br><br>
+                <h2>Link</h2>           
+                <form id="linkinputform">
+                    <div id="linkinputdiv">
+                        <label for="pub_url">URL</label>
+                        <input type="text" id="pub_url" name="pub_url" value="http://yourlinkhere.com">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+        <a href="#about" class="btn btn-circle page-scroll">
+            <i class="fa fa-angle-double-down animated"></i>
+        </a>
+        <br><br><br><br>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <h2>About Grayscale</h2>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+                <h2>Current Time</h2>           
+                <h1 id="clock"></h1><br>
+                <h2>Desired Delay</h2>
+                <div class="col1">
+                    <label for="textfield">Days</label> 
+                    <input id="textfield" type="text" value="0"/>
+                </div>
+                <div class="col2">
+                    <label for="textfield">Hours</label> 
+                    <input id="textfield" type="text" value="0"/>
+                </div>
+                <div class="col3">
+                    <label for="textfield">Minutes</label> 
+                    <input id="textfield" type="text" value="0"/>
+                </div>
+                <div class="clearfix"></div>
+                </div>
+                <br><br><br><br><br>
+                <section id="download" class="content-section text-center">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Generate Unique URL</a>
+                    </div>
+                </section>
             </div>
         </div>
     </section>
 
     <!-- Download Section -->
-    <section id="download" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Download Grayscale</h2>
-                    <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="container content-section text-center">
@@ -133,8 +186,6 @@
         </div>
     </section>
 
-    <!-- Map Section -->
-    <div id="map"></div>
 
     <!-- Footer -->
     <footer>

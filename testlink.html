@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Test Page</title>
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/grayscale.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+	<script type="text/javascript">
+        // This function gets the current time and injects it into the DOM
+
+        var d = new Date('2015-12-17T03:24:00');
+
+        function updateClock() {
+            // Gets the current time
+            var now = new Date();
+
+            // Get the hours, minutes and seconds from the current time
+            var hours = (d.getHours()-now.getHours());
+            var minutes = (d.getMinutes()-now.getMinutes());
+            var seconds = (d.getMinutes()-now.getSeconds());
+
+            var diff = (d.getTime() - now.getTime())/1000;
+            var days = Math.ceil(diff/(60*60*24));
+            hours = Math.ceil(diff/(60*60))%24;
+            minutes = Math.ceil(diff/(60))%60;
+            seconds = Math.ceil(diff)%60;
+
+            // Format hours, minutes and seconds
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+
+            // Gets the element we want to inject the clock into
+            var elem = document.getElementById('clock');
+
+            // Sets the elements inner HTML value to our clock data
+            elem.innerHTML = days + ':' + hours + ':' + minutes + ':' + seconds;
+        }
+    </script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" onload="setInterval('updateClock()', 200);">
+
+	<header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                    	<br><br><br><br>
+                        <h2>Patience is Key</h2>
+                        <img src="img/lock-icon.png">
+                        <h1 id="clock"></h1><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+</body>
+
+</html>
